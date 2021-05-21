@@ -18,12 +18,12 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef UNIX_HOST_DUINO_PRINT_H
-#define UNIX_HOST_DUINO_PRINT_H
+#ifndef EPOXY_DUINO_PRINT_H
+#define EPOXY_DUINO_PRINT_H
 
 #include <inttypes.h>
 #include <string.h> // strlen()
-#include <stdio.h> // for size_t
+#include <stddef.h> // size_t
 
 #include "WString.h"
 #include "Printable.h"
@@ -46,10 +46,10 @@ class Print
     void setWriteError(int err = 1) { write_error = err; }
   public:
     Print() : write_error(0) {}
-  
+
     int getWriteError() { return write_error; }
     void clearWriteError() { setWriteError(0); }
-  
+
     virtual size_t write(uint8_t) = 0;
     size_t write(const char *str) {
       if (str == NULL) return 0;
@@ -88,6 +88,10 @@ class Print
     size_t println(double, int = 2);
     size_t println(const Printable&);
     size_t println(void);
+
+    // printf() extension supported by many microcontrollers including
+    // Teensy, ESP8266 and ESP32 (but not AVR).
+    size_t printf(const char* format, ...);
 
     virtual void flush() { /* Empty implementation for backward compatibility */ }
 };

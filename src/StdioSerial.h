@@ -3,19 +3,19 @@
  * MIT License
  */
 
-#ifndef UNIX_HOST_DUINO_STDIO_SERIAL_H
-#define UNIX_HOST_DUINO_STDIO_SERIAL_H
+#ifndef EPOXY_DUINO_STDIO_SERIAL_H
+#define EPOXY_DUINO_STDIO_SERIAL_H
 
 #include "Print.h"
 #include "Stream.h"
 
 /**
  * A version of Serial that reads from STDIN and sends output to STDOUT on
- * Linux or MacOS (untested).
+ * Linux or MacOS.
  */
 class StdioSerial: public Stream {
   public:
-    void begin(unsigned long baud) { }
+    void begin(unsigned long /*baud*/) { }
 
     size_t write(uint8_t c) override;
 
