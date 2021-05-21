@@ -10,8 +10,8 @@
  * enough mappings to allow AUnit tests to compile and run on Linux or MacOS.
  */
 
-#ifndef UNIX_HOST_DUINO_PGMSPACE_H
-#define UNIX_HOST_DUINO_PGMSPACE_H
+#ifndef EPOXY_DUINO_PGMSPACE_H
+#define EPOXY_DUINO_PGMSPACE_H
 
 #include <string.h>
 
@@ -36,5 +36,7 @@
 #define strcasecmp_P strcasecmp
 #define strchr_P strchr
 #define strrchr_P strrchr
+#define memcpy_P memcpy
+#define vsnprintf_P vsnprintf
 
 #endif
